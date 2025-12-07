@@ -1,0 +1,16 @@
+{
+  "name": "fhevm-example-template",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "test": "npx hardhat test",
+    "compile": "npx hardhat compile"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "hardhat": "^2.22.0",
+    "fhevm": "^0.5.0",
+    "typescript": "^5.0.0",
+    "ts-node": "^10.9.0"
+  }
+}
