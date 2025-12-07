@@ -1,12 +1,8 @@
-# 🛡️ Zama FHEVM Example Factory
+Markdown
 
-> A CLI automation tool that instantly scaffolds production-ready FHEVM (Fully Homomorphic Encryption) smart contract environments.
+# 🛡️ Zama FHEVM Example Scaffolder
 
----
-
-## 🎥 Video Demo
-
-**[👉 https://youtu.be/1LUM5icC1Hs ]**
+> A TypeScript-based CLI automation tool that instantly scaffolds production-ready FHEVM (Fully Homomorphic Encryption) smart contract environments.
 
 ---
 
@@ -15,11 +11,12 @@
 This tool solves the "blank canvas" problem for FHEVM developers by generating fully configured, test-ready repositories in seconds.
 
 - **🏭 Instant Scaffolding:** Generates a standalone Hardhat project with one command.
-- **⚙️ Pre-Configured Environment:** Automatically sets up `fhevm`, `typescript`, and `hardhat-toolbox`.
-- **🧪 Auto-Generated Tests:** Writes passing tests that verify FHE logic (Encryption -> Computation -> Decryption).
-- **📚 Built-in Patterns:** Includes templates for:
-  - **Input Proofs:** Securely validating encrypted user inputs.
-  - **Access Control:** Managing decryption permissions (`TFHE.allow`).
+- **📝 Auto-Generated Documentation:** Automatically extracts `/// @notice` comments from Solidity code to build the README.
+- **⚙️ Pre-Configured Environment:** Sets up `fhevm`, `typescript`, and `hardhat-toolbox` automatically.
+- **📚 Built-in Categories:**
+  - **Basic:** Simple encrypted counters (`TFHE.add`).
+  - **Encryption:** Secure input proofs and validation.
+  - **Access Control:** Managing permissions with `TFHE.allow`.
 
 ---
 
@@ -29,47 +26,64 @@ This tool solves the "blank canvas" problem for FHEVM developers by generating f
    ```bash
    git clone [https://github.com/tilakkumar56/cli-automation-tool-for-zama.git](https://github.com/tilakkumar56/cli-automation-tool-for-zama.git)
    cd cli-automation-tool-for-zama
+Install dependencies:
 
-2. Install dependencies:
+Bash
 
-   npm install
-
+npm install
 ⚡ Usage Guide
-1. Generate an "Input Proof" Example
-This example demonstrates how to accept encrypted parameters from a user and validate the ZK proof on-chain.
+The tool uses a simple CLI command npm run generate to create new projects in the result/ folder.
 
-# Run the generator
-node scripts/create-fhevm-example.js --name input-proof
+1. Generate a "Counter" Example (Basic)
+Demonstrates basic encrypted arithmetic.
 
-# Navigate to the generated project
-cd result/input-proof
+Bash
 
-# Install dependencies and run the test
+# Generate the project
+npm run generate -- --name counter
+
+# Run the generated test
+cd result/counter
 npm install
 npx hardhat test
+2. Generate an "Input Proof" Example (Encryption)
+Demonstrates how to accept encrypted parameters and validate ZK proofs.
 
-2. Generate an "Access Control" Example
-This example shows how to restrict data visibility and grant decryption permissions to specific users using TFHE.allow.
+Bash
 
-# Return to root (if inside another folder)
+# Return to root
 cd ../..
 
-# Run the generator
-node scripts/create-fhevm-example.js --name access-control
+# Generate the project
+npm run generate -- --name input-proof
 
-# Test the generated logic
+# Run the generated test
+cd result/input-proof
+npm install
+npx hardhat test
+3. Generate an "Access Control" Example (Permissions)
+Demonstrates restricting data visibility using TFHE.allow.
+
+Bash
+
+# Return to root
+cd ../..
+
+# Generate the project
+npm run generate -- --name access-control
+
+# Run the generated test
 cd result/access-control
 npm install
 npx hardhat test
-
 📂 Project Structure
-The tool uses a "Factory Pattern" to assemble projects:
+The tool follows a "Factory Pattern" to assemble projects dynamically:
+
+Plaintext
 
 ├── scripts/
-│   └── create-fhevm-example.js   # 🧠 The Logic: Parses CLI args & generates code
+│   └── create-fhevm-example.ts   # 🧠 The Factory: Typescript automation logic
 ├── templates/
 │   └── base-template/            # 🦴 The Skeleton: Standard Hardhat config & tsconfig
 ├── result/                       # 📦 The Output: Generated projects appear here
-└── README.md
-
-   
+└── package.json                  # 🔧 Config: scripts and dependencies
