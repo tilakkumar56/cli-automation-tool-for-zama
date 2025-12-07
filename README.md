@@ -1,9 +1,5 @@
 # 🛡️ Zama FHEVM Example Factory
 
-[![Hardhat][hardhat-badge]][hardhat-url]
-[![FHEVM][fhevm-badge]][fhevm-url]
-[![License: MIT][license-badge]][license-url]
-
 > A CLI automation tool that instantly scaffolds production-ready FHEVM (Fully Homomorphic Encryption) smart contract environments.
 
 ---
